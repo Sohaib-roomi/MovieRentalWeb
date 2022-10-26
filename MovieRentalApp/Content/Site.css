@@ -1,0 +1,54 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.head-bg {
+    background-image: url('https://www.cordcuttersnews.com/wp-content/uploads/2015/05/Hulu-e1455593495523-1096x477.jpg');
+    background-color: gray;
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0px;
+}
+
+.head-text {
+    border-radius: 15px;
+    background-color: #0f171e;
+    text-align: left;
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 1.5rem;
+}
+
+
+section#home-section {
+    margin-left: -75px;
+    margin-right: -75px;
+    margin-top: -50px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}

@@ -1,0 +1,70 @@
+﻿@model MovieRentalApp.ViewModel.MovieFormViewModel
+@{ ViewBag.Title = "Add New Movie";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<div id="page-wrapper">
+    <div class="main-page">
+        @Html.Partial("MessageAlert")
+
+        <div class="sign-up-row widget-shadow">
+
+
+
+            <h2>@ViewBag.Title</h2>
+
+            @using (Html.BeginForm("AddNewMovie", "Movies", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {@* if (ViewBag.error != null)
+    {
+        <div class="form-group">
+            <label class="alert alert-danger">@ViewBag.error</label>
+        </div>
+    }*@
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Movies.Name)
+                                                @Html.TextBoxFor(m => m.Movies.Name, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Movies.Name, "", new { @class = "text-danger" })
+                                            </div>
+                                                            <div class="form-group">
+                                                                @Html.LabelFor(m => m.Movies.ReleaseDate)
+                                                                @Html.TextBoxFor(m => m.Movies.ReleaseDate, "", new { @class = "form-control", @Type = "Date" })
+
+                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(m => m.Movies.GenreId)
+                                                                                @Html.DropDownListFor(m => m.Movies.GenreId, new SelectList(Model.Genre, "Id", "Name"), "---Select Movie genre---", new { @class = "form-control" })
+                                                                                @*@Html.DropDownListFor(o => o.Movies.Movie_GenreID, ViewBag.genre as SelectList, "---Select Movie genre---", new { @class = "form-control" })*@
+                                                                                @Html.ValidationMessageFor(model => model.Movies.GenreId, "", new { @class = "text-danger" })
+                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                @Html.LabelFor(m => m.Movies.NumberInStock)
+                                                                                                @Html.TextBoxFor(m => m.Movies.NumberInStock, new { @class = "form-control" })
+
+                                                                                            </div>
+
+                                                                                                            <div class="form-group">
+                                                                                                                @Html.LabelFor(m => m.Movies.ImageURL)
+                                                                                                                <input type="file" name="ImageURL" id="ImageURL" class="form-control" />
+                                                                                                                @*@Html.EditorFor(m => m.Movies.ImageURL, new {htmlAttributes= new { @class = "form-control",@Type="file" } })*@
+
+                                                                                                            </div>
+
+
+                                                                                                                            <div class="form-group">
+                                                                                                                                <div>
+                                                                                                                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                                                                                                                </div>
+                                                                                                                            </div>
+
+                                                                                                                                            <div>
+                                                                                                                                                @Html.ActionLink("Back to List", "Index")
+                                                                                                                                            </div>}
+
+
+        </div>
+    </div>
+</div>

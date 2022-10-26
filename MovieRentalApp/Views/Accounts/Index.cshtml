@@ -1,0 +1,113 @@
+﻿@model MovieRentalApp.Models.User
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="~/Content/Accounts/Login/Fonts/style.css" rel="stylesheet" />
+    <link href="~/Content/Accounts/Login/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/Accounts/Login/bootstrap.min.css" rel="stylesheet" />
+    <!-- Style -->
+    <link href="~/Content/Accounts/Login/style.css" rel="stylesheet" />
+
+    <title>Login</title>
+</head>
+<body>
+    @*@Html.Partial("_Navbar")*@
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/Content/Accounts/Login/Images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Sign In</h3>
+                                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                            </div>
+                            <div>
+                                @Html.Partial("Message")
+                            </div>
+                            <form action="@Url.Action("Login")" method="post">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                <div class="form-group first">
+                                    <label for="Email">Email</label>
+                                    <input type="email" class="form-control" id="Email" name="Email" required>
+                                    @Html.ValidationMessageFor(u => u.Email, "", new { @class = "text-danger" })
+
+                                </div>
+
+
+                                @*                                <div class="form-group first">
+                                        <label for="Email">Email</label>
+                                        @Html.LabelFor(u => u.Email)
+                                        <input type="email" class="form-control" id="Email" name="Email">
+                                        @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(u => u.Email, "", new { @class = "text-danger" })
+
+                                    </div>*@
+
+                                <div class="form-group first">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" id="Password" name="Password" required>
+                                    @Html.ValidationMessageFor(u => u.Email, "", new { @class = "text-danger" })
+
+                                </div>
+
+
+
+                                @*<div class="form-group last mb-4">
+                                        @Html.LabelFor(u => u.Password)
+                                        @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(u => u.Password, "", new { @class = "text-danger" })
+
+                                    </div>*@
+
+                                <div class="d-flex mb-5 align-items-center">
+                                    <label class="control control--checkbox mb-0">
+                                        <span class="caption">Remember me</span>
+                                        <input type="checkbox" checked="checked" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password?</a></span>
+                                </div>
+
+                                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+                                <span class="d-block text-left my-4 ">&mdash; Click <a href="@Url.Action("SignUp")">here</a> to sign up &mdash;</span>
+
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/Content/Accounts/Login/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/Accounts/Login/popper.min.js"></script>
+
+    <script src="~/Content/Accounts/Login/bootstrap.min.js"></script>
+    <script src="~/Content/Accounts/Login/main.js"></script>
+
+
+</body>
+</html>

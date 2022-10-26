@@ -1,0 +1,67 @@
+﻿
+@model MovieRentalApp.Models.User
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+@*    Layout = "~/Views/Shared/Login.cshtml";*@
+}
+
+<div id="page-wrapper">
+    <div class="main-page signup-page">
+        @Html.Partial("MessageAlert")
+        <h2 class="title1">SignUp Here</h2>
+        <div class="sign-up-row widget-shadow">
+            <h5>Personal Information :</h5>
+            @using (Html.BeginForm("Register", "MyAccounts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="sign-u">
+                    <input type="text" name="UserName" placeholder="User Name" required="">
+                    <div class="clearfix"> </div>
+                </div>
+
+                <div class="sign-u">
+                    <input type="email" name="Email" placeholder="Email Address" required="">
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    <div class="clearfix"> </div>
+                </div>
+                @*<div class="sign-u">
+                        <div class="sign-up1">
+                            <h4>Gender* :</h4>
+                        </div>
+                        <div class="sign-up2">
+                            <label>
+                                <input type="radio" name="Gender" required="">
+                                Male
+                            </label>
+                            <label>
+                                <input type="radio" name="Gender" required="">
+                                Female
+                            </label>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>*@
+                <h6>Login Information :</h6>
+                <div class="sign-u">
+                    <input type="password" name="Password" placeholder="Password" required="">
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    <div class="clearfix"> </div>
+                </div>
+
+                @*<div class="sign-u">
+                        <input type="password" placeholder="Confirm Password" required="">
+                    </div>*@
+                <div class="clearfix"> </div>
+                <div class="sub_home">
+                    <input type="submit" value="Submit">
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="registration">
+                    Already Registered.
+                    <a class="" href="@Url.Action("Login","MyAccounts")">
+                        Login
+                    </a>
+                </div>
+            }
+        </div>
+    </div>

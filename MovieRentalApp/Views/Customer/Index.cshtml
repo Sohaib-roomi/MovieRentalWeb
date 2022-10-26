@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MovieRentalApp.Models.Customer>
+
+@{ ViewBag.Title = "Customers";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<div id="page-wrapper">
+    <div class="main-page">
+        @Html.Partial("MessageAlert")
+
+        <div class="sign-up-row widget-shadow">
+
+            <h2>Customers</h2>
+
+            <p>
+                @Html.ActionLink("Add New Customer", "AddNewCustomer", "Customer", null, new { @class = "btn btn-primary" })
+            </p>
+
+            @if (!Model.Any())
+            {
+<p>Don't have any customers yet</p> }
+
+            else
+            {
+<table class=" table table-bordered table-hover">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Membership Type</th>
+            <th>Discount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var cust in Model)
+        {
+<tr>
+    <td>@Html.ActionLink(cust.Name, "Details", "Customer", new { Id = cust.Id }, null)</td>
+    <td>@cust.MembershipType.Name</td>
+    <td>@cust.MembershipType.Discount%</td>
+    <td>
+        @Html.ActionLink("Edit", "EditCust", "Customer", new { Id = cust.Id }, null) ||
+        @Html.ActionLink("Delete", "Delete", "Customer", new { Id = cust.Id }, null)
+    </td>
+
+</tr>}
+
+    </tbody>
+
+</table>}
+
+
+        </div>
+    </div>
+</div>

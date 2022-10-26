@@ -1,0 +1,84 @@
+﻿@model MovieRentalApp.ViewModel.CustomerFormVIewModel
+
+@{
+    ViewBag.Title = "Edit Customer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div id="page-wrapper">
+    <div class="main-page ">
+        @Html.Partial("MessageAlert")
+
+        <div class="sign-up-row widget-shadow">
+
+
+
+@using (Html.BeginForm("EditCust", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.HiddenFor(m => m.Customer.Id)
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Email)
+        @Html.TextBoxFor(c => c.Customer.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeId)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "---Select Membership Type---", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.MembershipTypeId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Birthdate)
+        @*@Html.EditorFor(c => c.Customer.Birthdate,"{0:yyyy/MM/dd}",new { htmlAttributes = new { @class = "form-control" ,@type="Date"} })*@
+        @Html.EditorFor(c => c.Customer.Birthdate, new { htmlAttributes = new { @class = "form-control", @type = "Date" } })
+        @Html.ValidationMessageFor(c => c.Customer.Birthdate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <img style="justify-content:center; width:50%;" src="~/Images/CustomerPics/@Model.Customer.ImageURL " alt="Alternate Text" />
+        @*@Html.LabelFor(m => m.Customer.ImageURL)*@
+        <input type="file" name="ImageURL" id="ImageURL" class="form-control" />
+        @*@Html.EditorFor(m => m.Movies.ImageURL, new {htmlAttributes= new { @class = "form-control",@Type="file" } })*@
+
+    </div>
+
+
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(c => c.Customer.isSubscribed)Subscribed to Newsletter?
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+}
+
+            
+
+        </div>
+    </div>
+</div>
